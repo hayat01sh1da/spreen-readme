@@ -1,0 +1,15 @@
+# Generated from test/application_test.rb with RBS::Inline
+
+class ApplicationTest < Minitest::Test
+  def setup: () -> untyped
+
+  def test_run_succeeds: () -> untyped
+
+  def test_run_announces_the_target_readme: () -> untyped
+
+  def test_run_defaults_to_the_current_directory: () -> untyped
+
+  private
+
+  attr_reader io: untyped
+end

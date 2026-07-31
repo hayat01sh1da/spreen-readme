@@ -1,0 +1,38 @@
+# Generated from lib/spreen_readme/cli.rb with RBS::Inline
+
+module SpreenReadme
+  # Command line interface behind the `readme-update` executable:
+  # `readme-update [--path DIR]`.
+  class CLI
+    # @rbs argv: Array[String]
+    # @rbs return: Integer
+    def self.start: (?Array[String] argv) -> Integer
+
+    # @rbs argv: Array[String]
+    # @rbs return: void
+    def initialize: (Array[String] argv) -> void
+
+    # @rbs return: Integer
+    def run: () -> Integer
+
+    private
+
+    attr_reader argv: Array[String]
+
+    attr_reader path: String
+
+    attr_reader action: Symbol
+
+    # @rbs return: Integer
+    def update_readme: () -> Integer
+
+    # @rbs return: Integer
+    def print_version: () -> Integer
+
+    # @rbs return: Integer
+    def print_help: () -> Integer
+
+    # @rbs return: OptionParser
+    def parser: () -> OptionParser
+  end
+end

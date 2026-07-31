@@ -1,0 +1,13 @@
+# Generated from test/cli_test.rb with RBS::Inline
+
+class CLITest < Minitest::Test
+  def test_start_updates_the_readme: () -> untyped
+
+  def test_start_prints_the_version: () -> untyped
+
+  def test_start_prints_the_help: () -> untyped
+
+  def test_start_honours_the_path_option: () -> untyped
+
+  def test_start_rejects_an_unknown_option: () -> untyped
+end
