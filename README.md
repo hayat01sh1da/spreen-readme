@@ -6,11 +6,14 @@
 
 # spreen-readme
 
+<img src="./assets/spreen-readme-icon.svg" align="center" width="300" alt="spreen-readme: an origami falcon stooping across an ink-blue stone, a stale README page drifting ahead of its dive and its lines left settled into order in its wake" />
+
 ## 1. Overview
 
 **spreen-readme** — the falcon's stoop, then the preen — keeps `README.md` up to date from the repository it documents.  
 It ships as a RubyGems gem and a PyPI library, both installing the same `readme-update` CLI.
 
+The icon tells the story: the origami falcon (隼 /hayabusa/) mid-stoop across the ink-blue stone, a stale README page drifting out of date ahead of its dive and its lines left flush and in order in the wake — the documentation, settled.  
 The full legend behind the `spreen` name is told in [spreen-wiki's README](https://github.com/hayat01sh1da/spreen-wiki#1-origin-of-the-name).
 
 ```command
