@@ -5,7 +5,7 @@
 # This workflow will download a prebuilt Ruby version, install dependencies and run tests with Rake
 # For more information see: https://github.com/marketplace/actions/setup-ruby-jruby-and-truffleruby
 
-name: Ruby - CI
+name: RubyGem - CI
 
 on:
   push:
@@ -13,27 +13,31 @@ on:
       - master
     paths:
       - .github/actions/setup-ruby/action.yml
-      - .github/workflows/ruby--ci.yml
+      - .github/workflows/rubygem--ci.yml
       - .ruby-version
-      - ruby/**/*.rb
-      - ruby/**/*.rbs
-      - ruby/Gemfile
-      - ruby/Gemfile.lock
-      - ruby/.rubocop.yml
-      - ruby/.rubocop_todo.yml
-      - ruby/Steepfile
+      - RubyGem/**/*.rb
+      - RubyGem/**/*.rbs
+      - RubyGem/*.gemspec
+      - RubyGem/.rubocop.yml
+      - RubyGem/.rubocop_todo.yml
+      - RubyGem/Gemfile
+      - RubyGem/Gemfile.lock
+      - RubyGem/Rakefile
+      - RubyGem/Steepfile
   pull_request:
     paths:
       - .github/actions/setup-ruby/action.yml
-      - .github/workflows/ruby--ci.yml
+      - .github/workflows/rubygem--ci.yml
       - .ruby-version
-      - ruby/**/*.rb
-      - ruby/**/*.rbs
-      - ruby/Gemfile
-      - ruby/Gemfile.lock
-      - ruby/.rubocop.yml
-      - ruby/.rubocop_todo.yml
-      - ruby/Steepfile
+      - RubyGem/**/*.rb
+      - RubyGem/**/*.rbs
+      - RubyGem/*.gemspec
+      - RubyGem/.rubocop.yml
+      - RubyGem/.rubocop_todo.yml
+      - RubyGem/Gemfile
+      - RubyGem/Gemfile.lock
+      - RubyGem/Rakefile
+      - RubyGem/Steepfile
 
 permissions:
   contents: read
@@ -43,7 +47,7 @@ jobs:
   change-detection:
     runs-on: ubuntu-latest
     outputs:
-      ruby-changes: ${{ steps.change-detection.outputs.ruby }}
+      minitest-changes: ${{ steps.change-detection.outputs.minitest }}
       rubocop-changes: ${{ steps.change-detection.outputs.rubocop}}
       steep-changes: ${{ steps.change-detection.outputs.steep}}
     steps:
@@ -53,43 +57,49 @@ jobs:
         id: change-detection
         with:
           filters: |
-            ruby:
+            minitest:
               - .github/actions/setup-ruby/action.yml
-              - .github/workflows/ruby--ci.yml
+              - .github/workflows/rubygem--ci.yml
               - .ruby-version
-              - ruby/**/*.rb
-              - ruby/Gemfile
-              - ruby/Gemfile.lock
+              - RubyGem/**/*.rb
+              - RubyGem/*.gemspec
+              - RubyGem/Gemfile
+              - RubyGem/Gemfile.lock
+              - RubyGem/Rakefile
             rubocop:
               - .github/actions/setup-ruby/action.yml
-              - .github/workflows/ruby--ci.yml
+              - .github/workflows/rubygem--ci.yml
               - .ruby-version
-              - ruby/**/*.rb
-              - ruby/Gemfile
-              - ruby/Gemfile.lock
-              - ruby/.rubocop.yml
-              - ruby/.rubocop_todo.yml
+              - RubyGem/**/*.rb
+              - RubyGem/*.gemspec
+              - RubyGem/.rubocop.yml
+              - RubyGem/.rubocop_todo.yml
+              - RubyGem/Gemfile
+              - RubyGem/Gemfile.lock
+              - RubyGem/Rakefile
+              - RubyGem/Steepfile
             steep:
               - .github/actions/setup-ruby/action.yml
-              - .github/workflows/ruby--ci.yml
+              - .github/workflows/rubygem--ci.yml
               - .ruby-version
-              - ruby/**/*.rb
-              - ruby/**/*.rbs
-              - ruby/Gemfile
-              - ruby/Gemfile.lock
-              - ruby/Steepfile
+              - RubyGem/**/*.rb
+              - RubyGem/**/*.rbs
+              - RubyGem/*.gemspec
+              - RubyGem/Gemfile
+              - RubyGem/Gemfile.lock
+              - RubyGem/Steepfile
   minitest:
     timeout-minutes: 10
     runs-on: ubuntu-latest
     needs: change-detection
-    if: needs.change-detection.outputs.ruby-changes == 'true'
+    if: needs.change-detection.outputs.minitest-changes == 'true'
     steps:
       - uses: actions/checkout@v7
       - uses: ./.github/actions/setup-ruby
         with:
           job-name: minitest
       - name: Minitest
-        working-directory: ./ruby
+        working-directory: ./RubyGem
         run: rake
   rubocop:
     timeout-minutes: 10
@@ -102,7 +112,7 @@ jobs:
         with:
           job-name: rubocop
       - name: RuboCop
-        working-directory: ./ruby
+        working-directory: ./RubyGem
         run: bundle exec rubocop
   steep:
     timeout-minutes: 10
@@ -115,6 +125,6 @@ jobs:
         with:
           job-name: steep
       - name: Steep
-        working-directory: ./ruby
+        working-directory: ./RubyGem
         run: |
           bundle exec steep check

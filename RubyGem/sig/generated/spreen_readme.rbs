@@ -1,0 +1,6 @@
+# Generated from lib/spreen_readme.rb with RBS::Inline
+
+# Spreens your README — the falcon's stoop, then the preen: keeps README.md
+# up to date from the repository it documents.
+module SpreenReadme
+end
