@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "spreen-readme"
+version = "0.1.0"
+description = "Keep README.md up to date from the repository it documents."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE.txt"]
+authors = [{ name = "hayat01sh1da" }]
+requires-python = ">=3.10"
+keywords = ["readme", "documentation", "markdown", "generator"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Documentation",
+    "Topic :: Software Development :: Documentation",
+]
+
+[project.urls]
+Homepage = "https://github.com/hayat01sh1da/spreen-readme"
+Source = "https://github.com/hayat01sh1da/spreen-readme"
+Changelog = "https://github.com/hayat01sh1da/spreen-readme/blob/master/CHANGELOG.md"
+
+[project.scripts]
+readme-update = "spreen_readme.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+spreen_readme = ["py.typed"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["test"]
+
+[tool.mypy]
+python_version = "3.14"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+mypy_path = "src"
