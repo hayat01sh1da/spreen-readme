@@ -1,6 +1,6 @@
 ## 1. Environment
 
-- Python 3.14.6
+- Python 3.14.7
 - pip 26.2.1
 
 ## 2. Installation
@@ -50,7 +50,7 @@ The package ships `py.typed`.
 ```command
 $ pytest
 ============================= test session starts ==============================
-platform linux -- Python 3.14.6, pytest-9.1.1, pluggy-1.6.0
+platform linux -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0
 rootdir: spreen-readme/PyPI
 configfile: pyproject.toml
 testpaths: test
