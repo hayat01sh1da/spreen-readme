@@ -11,7 +11,7 @@
 | RubyGems gem         | Ruby >= 3.4 (`required_ruby_version`)      | Standard library only — the gem declares no runtime dependencies.                  |
 | Ruby toolchain       | Ruby 4.0.6 (`RubyGem/.ruby-version`)       | Development and CI interpreter; Bundler resolves the development gems.             |
 | PyPI library         | CPython >= 3.10 (`requires-python`)        | Standard library only — the library declares no runtime dependencies.              |
-| Python toolchain     | CPython 3.14.6 (`PyPI/.python-version`)    | Development and CI interpreter; `requirements.txt` pins the development libraries. |
+| Python toolchain     | CPython 3.14.7 (`PyPI/.python-version`)    | Development and CI interpreter; `requirements.txt` pins the development libraries. |
 
 ## Release Integrity
 
